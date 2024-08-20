@@ -16,18 +16,9 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html {
+  font-size: 16px;
+  @apply h-full w-full;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+@import "./components/header.scss";

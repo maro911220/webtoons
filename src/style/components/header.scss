@@ -1,0 +1,7 @@
+@import "../variables/__mixin.scss";
+
+.header {
+  @apply h-16;
+  @apply flex items-center justify-between;
+  @include container;
+}
