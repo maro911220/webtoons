@@ -5,13 +5,14 @@
 @import "./variables/_variables";
 @import "./variables/_root";
 
-
 html {
   font-size: 16px;
   @apply w-full h-full;
 }
 
 body {
+  @apply text-stone-200;
+  @apply bg-stone-950;
   @apply w-full h-full;
   @apply overflow-x-hidden;
 }

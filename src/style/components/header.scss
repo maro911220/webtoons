@@ -1,7 +1,27 @@
-@import "../variables/__mixin.scss";
-
 .header {
-  @apply h-16;
-  @apply flex items-center justify-between;
-  @include container;
+  @apply bg-stone-950/90;
+  @apply w-full h-16;
+  @apply fixed top-0 z-50;
+  @apply backdrop-blur-sm;
+
+  &-con {
+    @apply flex items-center justify-between;
+    @apply max-w-screen-lg h-full px-4 mx-auto;
+    & > * {
+      @apply flex-1;
+      @apply text-center;
+    }
+  }
+
+  &-title {
+    @apply text-2xl;
+  }
+
+  &-git {
+    @apply text-right;
+  }
+
+  &-list {
+    @apply text-left;
+  }
 }

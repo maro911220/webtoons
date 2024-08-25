@@ -1,0 +1,12 @@
+.home-con {
+  @apply px-4;
+  @apply max-w-screen-lg mx-auto relative;
+}
+
+.home-hero {
+  @apply pt-20 pb-40;
+
+  .home-con {
+    @apply flex items-center justify-center gap-8;
+  }
+}

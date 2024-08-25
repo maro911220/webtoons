@@ -1,0 +1,21 @@
+.list {
+  @apply grid grid-cols-5 gap-2;
+  &-item {
+    @apply rounded-sm;
+    @apply bg-stone-900;
+    @apply flex flex-col;
+    @apply border border-stone-700;
+
+    img {
+      @apply w-full h-72;
+      @apply object-cover;
+    }
+
+    span {
+      @apply p-1;
+      @apply h-12;
+      @apply inline-block;
+      @apply text-sm break-keep;
+    }
+  }
+}

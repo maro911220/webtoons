@@ -1,0 +1,41 @@
+// card
+.card-wrap {
+  perspective: 1000px;
+  @apply w-full h-[470px];
+  @apply flex justify-center;
+  &:nth-of-type(1) {
+    .card {
+      @apply bg-green-500;
+    }
+  }
+  &:nth-of-type(2) {
+    .card {
+      @apply bg-stone-500;
+    }
+  }
+  &:nth-of-type(3) {
+    .card {
+      @apply bg-yellow-500;
+    }
+  }
+}
+
+.card {
+  transform-style: preserve-3d;
+  @apply relative;
+  @apply rounded-md;
+  @apply w-full h-full;
+  // background-image: url(/img/naver_bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-img {
+  transform: translateZ(80px) translateX(50%);
+  transform-style: preserve-3d;
+  @apply w-2/4 h-full;
+  @apply pointer-events-none;
+  @apply absolute -bottom-48 left-0;
+  @apply bg-transparent bg-no-repeat bg-center bg-contain;
+}
