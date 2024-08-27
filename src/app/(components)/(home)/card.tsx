@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import "@/style/components/home/card.scss";
 
 export default function Card({ url, title }: { url: string; title: string }) {
@@ -18,7 +19,7 @@ export default function Card({ url, title }: { url: string; title: string }) {
   const mouseEndEvent = () => setMousePos({ x: 0, y: 0 });
   return (
     <>
-      <a href="https://page.kakao.com/" className="card-wrap">
+      <Link href={"/list/kakao"} className="card-wrap">
         <motion.div
           onMouseMove={(e) => mouseEvent(e)}
           onHoverEnd={mouseEndEvent}
@@ -31,7 +32,7 @@ export default function Card({ url, title }: { url: string; title: string }) {
             style={{ backgroundImage: `url(${url})` }}
           ></div>
         </motion.div>
-      </a>
+      </Link>
     </>
   );
 }

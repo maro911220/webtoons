@@ -7,21 +7,27 @@
   &-con {
     @apply flex items-center justify-between;
     @apply max-w-screen-lg h-full px-4 mx-auto;
-    & > * {
-      @apply flex-1;
-      @apply text-center;
-    }
   }
 
   &-title {
     @apply text-2xl;
+    @apply absolute top-[50%] left-[50%];
+    @apply translate-x-[-50%] translate-y-[-50%];
   }
 
   &-git {
+    @apply flex-none;
     @apply text-right;
   }
 
   &-list {
-    @apply text-left;
+    @apply flex flex-none gap-2;
+
+    &-item {
+      @apply flex;
+      img {
+        @apply w-8;
+      }
+    }
   }
 }

@@ -1,6 +1,10 @@
+"use client";
 import Card from "./(components)/(home)/card";
 import List from "./(components)/(home)/list";
 import "@/style/pages/home.scss";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
+
 export default function Page() {
   // sample
 
@@ -16,9 +20,11 @@ export default function Page() {
       </section>
       {/* new card */}
       <section className="home-update">
-        <div className="home-con">
-          <List />
-        </div>
+        <QueryClientProvider client={queryClient}>
+          <div className="home-con">
+            <List />
+          </div>
+        </QueryClientProvider>
       </section>
     </>
   );
