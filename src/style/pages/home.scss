@@ -1,3 +1,5 @@
+@import "../variables/_mixin";
+
 .home-con {
   @apply px-4;
   @apply max-w-screen-lg mx-auto relative;
@@ -8,5 +10,21 @@
 
   .home-con {
     @apply flex items-center justify-center gap-8;
+  }
+}
+
+@include md("lg") {
+  .home-hero {
+    @apply pt-36 pb-20;
+    .home-con {
+      @apply gap-2;
+      @apply flex-col;
+    }
+  }
+}
+
+@include md("sm") {
+  .home-con {
+    @apply px-3;
   }
 }

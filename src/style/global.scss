@@ -14,5 +14,5 @@ body {
   @apply text-stone-200;
   @apply bg-stone-950;
   @apply w-full h-full;
-  @apply overflow-x-hidden;
+  @apply overflow-x-hidden overflow-y-scroll;
 }

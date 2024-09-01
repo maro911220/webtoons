@@ -1,19 +1,22 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
 
+"use client";
 import axios from "axios";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import Loading from "../loading";
 import "@/style/components/home/list.scss";
 
-const ROWS_PER_PAGE = 20; // 한 페이지당 불러올 상품개수
+// 로드 아이템 수, url
+const ROWS_PER_PAGE = 20;
+const url = `https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons`;
 
 export default function List() {
   const { ref, inView } = useInView({ threshold: 0 });
 
-  // API URL 및 fetch 함수
-  const url = `https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons`;
+  // fetch 함수
   const fetchPage = async (pageParam: number) => {
     const response = await axios.get(url, {
       params: { perPage: ROWS_PER_PAGE, isUpdated: true, page: pageParam },
@@ -34,17 +37,15 @@ export default function List() {
       },
     });
 
-  // 무한 스크롤을 위해 inView 사용
+  // 무한 스크롤 inView 사용
   useEffect(() => {
-    if (inView && !isLoading && hasNextPage) {
-      console.log(hasNextPage);
-      fetchNextPage();
-    }
-  }, [inView, isLoading, fetchNextPage]);
+    if (inView && !isLoading && hasNextPage) fetchNextPage();
+  }, [inView, isLoading, fetchNextPage, hasNextPage]);
 
   // Loading & Error 처리
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>정보를 불러오는데 실패했습니다.</p>;
+  if (isLoading) return <Loading size={72} />;
+  if (error)
+    return <p className="text-center">정보를 불러오는데 실패했습니다.</p>;
 
   // 웹툰 리스트 렌더링
   return (
@@ -62,8 +63,11 @@ export default function List() {
           </motion.a>
         ))}
       </AnimatePresence>
-      <div className="absolute bottom-0 opacity-0" ref={ref}>
-        <p>트리거에용</p>
+      <div
+        className="absolute w-full left-0 bottom-0 text-center mx-auto py-6"
+        ref={ref}
+      >
+        {hasNextPage ? <Loading size={32} /> : <p>마지막 입니다.</p>}
       </div>
     </div>
   );

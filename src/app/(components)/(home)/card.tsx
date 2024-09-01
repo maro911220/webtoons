@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import "@/style/components/home/card.scss";
 
-export default function Card({ url, title }: { url: string; title: string }) {
+export default function Card({ src, title }: { src: string; title: string }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const mouseEvent = (e: any) => {
     const pos = (a: number, b: number, c: number) => (a - b) * c;
@@ -19,7 +19,7 @@ export default function Card({ url, title }: { url: string; title: string }) {
   const mouseEndEvent = () => setMousePos({ x: 0, y: 0 });
   return (
     <>
-      <Link href={"/list/kakao"} className="card-wrap">
+      <Link href={`/list/${title}`} className="card-wrap">
         <motion.div
           onMouseMove={(e) => mouseEvent(e)}
           onHoverEnd={mouseEndEvent}
@@ -29,7 +29,7 @@ export default function Card({ url, title }: { url: string; title: string }) {
         >
           <div
             className="card-img"
-            style={{ backgroundImage: `url(${url})` }}
+            style={{ backgroundImage: `url(${src})` }}
           ></div>
         </motion.div>
       </Link>

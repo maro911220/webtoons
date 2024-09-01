@@ -5,17 +5,21 @@ import "@/style/pages/home.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
-export default function Page() {
-  // sample
+const list = [
+  { name: "NAVER", src: "/icon/logo_naver.png" },
+  { name: "KAKAO", src: "/icon/logo_kakao.png" },
+  { name: "KAKAO_PAGE", src: "/icon/logo_kakao_page.png" },
+];
 
+export default function Page() {
   return (
     <>
       {/* hero && search */}
       <section className="home-hero">
         <div className="home-con">
-          <Card url="/icon/logo_naver.png" title="Naver" />
-          <Card url="/icon/logo_kakao.png" title="kakao" />
-          <Card url="/icon/logo_kakao_page.png" title="Kakao Page" />
+          {list.map((item, index) => (
+            <Card src={item.src} title={item.name} key={index} />
+          ))}
         </div>
       </section>
       {/* new card */}

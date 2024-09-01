@@ -1,3 +1,5 @@
+@import "../variables/_mixin";
+
 .header {
   @apply bg-stone-950/90;
   @apply w-full h-16;
@@ -5,14 +7,13 @@
   @apply backdrop-blur-sm;
 
   &-con {
+    @apply relative;
     @apply flex items-center justify-between;
-    @apply max-w-screen-lg h-full px-4 mx-auto;
+    @apply max-w-screen-lg h-full px-4 gap-10 mx-auto;
   }
 
   &-title {
     @apply text-2xl;
-    @apply absolute top-[50%] left-[50%];
-    @apply translate-x-[-50%] translate-y-[-50%];
   }
 
   &-git {
@@ -21,12 +22,73 @@
   }
 
   &-list {
-    @apply flex flex-none gap-2;
+    @apply flex items-center flex-none gap-2;
 
     &-item {
-      @apply flex;
+      @apply rounded;
+      @apply w-10 h-10 p-2;
+      @apply bg-stone-700/50;
+      @apply flex items-center justify-center;
+
       img {
-        @apply w-8;
+        @apply w-full;
+      }
+    }
+  }
+
+  &-search {
+    @apply flex flex-1;
+    @apply rounded overflow-hidden;
+
+    input {
+      @apply w-full py-2 px-4;
+      @apply bg-stone-700/50;
+
+      &:focus {
+        @apply outline-none;
+      }
+    }
+
+    button {
+      @apply px-4;
+      @apply flex-none;
+      @apply bg-rose-700;
+    }
+  }
+}
+
+@include md("lg") {
+  .header {
+    @apply h-28;
+
+    &-con {
+      @apply flex-wrap content-center gap-2;
+    }
+
+    &-search {
+      @apply order-3;
+      @apply w-full flex-none;
+    }
+  }
+}
+
+@include md("sm") {
+  .header {
+    &-con {
+      @apply px-3;
+    }
+
+    &-title {
+      @apply text-xl;
+    }
+
+    &-search {
+      @apply text-sm;
+    }
+
+    &-list {
+      &-item {
+        @apply w-8 h-8 p-1;
       }
     }
   }

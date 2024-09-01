@@ -1,5 +1,7 @@
+@import "../../variables/_mixin";
+
 .list {
-  @apply grid grid-cols-5 gap-2;
+  @apply grid grid-cols-5 gap-2 pb-20;
   &-item {
     @apply rounded-sm;
     @apply bg-stone-900;
@@ -12,10 +14,35 @@
     }
 
     span {
-      @apply p-1;
-      @apply h-12;
+      @apply p-2;
+      @apply h-8;
       @apply inline-block;
       @apply text-sm break-keep;
+      @apply truncate;
+    }
+  }
+}
+
+@include md("lg") {
+  .list {
+    @apply grid-cols-4;
+
+    &-item {
+      img {
+        @apply h-[160px];
+      }
+    }
+  }
+}
+
+@include md("md") {
+  .list {
+    @apply grid-cols-2;
+    &-item {
+      span {
+        @apply text-xs;
+        @apply leading-5;
+      }
     }
   }
 }
