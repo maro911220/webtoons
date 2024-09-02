@@ -59,8 +59,14 @@ function ToonList({
   });
 
   // Loading & Error 처리
-  if (isLoading) return <Loading size={72} />;
-  if (error) return <p>정보를 불러오는데 실패했습니다.</p>;
+  if (isLoading)
+    return (
+      <div className="py-4">
+        <Loading size={72} />
+      </div>
+    );
+  if (error)
+    return <p className="py-4 text-center">정보를 불러오는데 실패했습니다.</p>;
 
   return (
     <div className="toon-list">
