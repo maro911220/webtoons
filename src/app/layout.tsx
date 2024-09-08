@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Maro Webtoons",
     url: "https://maro-webtoons.vercel.app",
     description: "Maro Webtoons List Page",
-    images: "/tumb.png",
+    images: "/tumb.jpg",
     type: "website",
   },
 };
