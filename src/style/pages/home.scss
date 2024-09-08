@@ -3,6 +3,10 @@
 .home-con {
   @apply px-4;
   @apply max-w-screen-lg mx-auto relative;
+
+  &-title {
+    @apply text-left text-2xl font-medium pb-4;
+  }
 }
 
 .home-hero {

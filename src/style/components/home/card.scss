@@ -5,21 +5,6 @@
   perspective: 1000px;
   @apply w-full h-[470px];
   @apply flex justify-center;
-  &:nth-of-type(1) {
-    .card {
-      @apply bg-green-500;
-    }
-  }
-  &:nth-of-type(2) {
-    .card {
-      @apply bg-stone-500;
-    }
-  }
-  &:nth-of-type(3) {
-    .card {
-      @apply bg-yellow-500;
-    }
-  }
 }
 
 .card {
@@ -27,32 +12,77 @@
   @apply relative;
   @apply rounded-md;
   @apply w-full h-full;
-  // background-image: url(/img/naver_bg.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+  @apply border border-stone-700;
+  @apply bg-cover bg-center bg-no-repeat;
 
-.card-img {
-  transform: translateZ(80px) translateX(50%);
-  transform-style: preserve-3d;
-  @apply w-2/4 h-full;
-  @apply pointer-events-none;
-  @apply absolute -bottom-48 left-0;
-  @apply bg-transparent bg-no-repeat bg-center bg-contain;
+  &-img {
+    @apply w-[120px] h-[120px];
+    @apply pointer-events-none;
+    @apply absolute bottom-[-40px] left-[calc(50%-60px)];
+    @apply bg-transparent bg-no-repeat bg-bottom bg-contain;
+    transform: translateZ(67px);
+    transform-style: preserve-3d;
+  }
+
+  &-cover {
+    @apply opacity-0;
+    @apply w-full h-full;
+    @apply absolute top-0 left-0;
+  }
 }
 
 @include md("lg") {
   .card-wrap {
     @apply h-[200px];
+    .card {
+      &::after {
+        @apply from-black/90;
+      }
+    }
+    &:nth-of-type(1) {
+      .card {
+        &::after {
+          @apply to-stone-700/70;
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      .card {
+        &::after {
+          @apply to-green-900/70;
+        }
+      }
+    }
+
+    &:nth-of-type(3) {
+      .card {
+        &::after {
+          @apply to-yellow-900/70;
+        }
+      }
+    }
   }
 
   .card {
     transform: none !important;
-  }
+    &::after {
+      content: "";
+      @apply rounded-md;
+      @apply inline-block;
+      @apply w-full h-full;
+      @apply bg-gradient-to-b;
+      @apply absolute top-0 left-0;
+    }
 
-  .card-img {
-    @apply hidden;
+    &-img {
+      @apply w-[82px] h-[82px];
+      @apply top-[calc(50%-41px)] left-[calc(50%-41px)];
+    }
+
+    &-cover {
+      @apply hidden;
+    }
   }
 }
 

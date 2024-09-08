@@ -1,31 +1,32 @@
 "use client";
+import "@/style/pages/home.scss";
 import Card from "./(components)/(home)/card";
 import List from "./(components)/(home)/list";
-import "@/style/pages/home.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { defaultStore } from "@/store/store";
+
 const queryClient = new QueryClient();
 
-const list = [
-  { name: "NAVER", src: "/icon/logo_naver.png" },
-  { name: "KAKAO", src: "/icon/logo_kakao.png" },
-  { name: "KAKAO_PAGE", src: "/icon/logo_kakao_page.png" },
-];
-
 export default function Page() {
+  const toonWeb = defaultStore((state) => state.toonWeb);
+
   return (
     <>
-      {/* hero && search */}
+      <h1 className="hidden">홈</h1>
+      {/* Hero section */}
       <section className="home-hero">
+        <h2 className="hidden">홈 배너</h2>
         <div className="home-con">
-          {list.map((item, index) => (
-            <Card src={item.src} title={item.name} key={index} />
+          {toonWeb.map((item, index) => (
+            <Card title={item} key={index} />
           ))}
         </div>
       </section>
-      {/* new card */}
+      {/* New Toon section */}
       <section className="home-update">
         <QueryClientProvider client={queryClient}>
           <div className="home-con">
+            <h2 className="home-con-title">최근 업데이트</h2>
             <List />
           </div>
         </QueryClientProvider>

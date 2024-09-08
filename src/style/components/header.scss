@@ -1,10 +1,10 @@
 @import "../variables/_mixin";
 
 .header {
-  @apply bg-stone-950/90;
   @apply w-full h-16;
   @apply fixed top-0 z-50;
   @apply backdrop-blur-sm;
+  @apply bg-stone-950/90;
 
   &-con {
     @apply relative;
@@ -13,7 +13,8 @@
   }
 
   &-title {
-    @apply text-2xl;
+    @apply pl-1;
+    @apply font-bold uppercase text-2xl text-white;
   }
 
   &-git {
@@ -26,12 +27,23 @@
 
     &-item {
       @apply rounded;
-      @apply w-10 h-10 p-2;
+      @apply w-10 h-10;
+      @apply transition-all;
       @apply bg-stone-700/50;
       @apply flex items-center justify-center;
 
+      a {
+        @apply flex;
+        @apply w-full h-full p-2;
+      }
+
       img {
         @apply w-full;
+      }
+
+      &:hover,
+      &.active {
+        @apply bg-rose-700;
       }
     }
   }
@@ -88,7 +100,10 @@
 
     &-list {
       &-item {
-        @apply w-8 h-8 p-1;
+        @apply w-8 h-8;
+        a {
+          @apply p-1;
+        }
       }
     }
   }

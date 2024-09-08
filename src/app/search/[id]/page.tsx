@@ -1,23 +1,34 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import axios from "axios";
+import { useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "@/app/(components)/loading";
-import { useCallback } from "react";
+import ToonItem from "@/app/(components)/toonItem";
 
 // API URL
 const API_URL = "https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons";
 
 export default function Page({ params }: any) {
+  // 검색어를 URL 파라미터에서 가져와서 디코딩
+  const keyword = decodeURI(params.id);
+
   return (
     <div className="toon-con">
-      <ToonList keyword={decodeURI(params.id)} />
+      {/* 검색 결과 헤더 */}
+      <div className="toon-con-header">
+        <p className="toon-con-header__word">
+          <b>&#39;{keyword}&#39;</b> 로 검색한 결과입니다.
+        </p>
+      </div>
+      {/* 웹툰 리스트 컴포넌트 */}
+      <ToonList keyword={keyword} />
     </div>
   );
 }
 
-// 상세
+// 웹툰 목록을 가져오는 컴포넌트
 function ToonList({ keyword }: { keyword: string }) {
+  // 웹툰 데이터를 가져오는 함수
   const fetchWebtoons = useCallback(async () => {
     const response = await axios.get(API_URL, {
       params: {
@@ -28,6 +39,7 @@ function ToonList({ keyword }: { keyword: string }) {
     return response.data;
   }, [keyword]);
 
+  // React Query를 사용하여 웹툰 데이터를 가져옴
   const { isLoading, error, data } = useQuery({
     queryKey: [keyword],
     queryFn: fetchWebtoons,
@@ -39,27 +51,12 @@ function ToonList({ keyword }: { keyword: string }) {
 
   return (
     <div className="toon-list">
-      {data.webtoons.length > 1 ? (
+      {data.webtoons.length > 0 ? (
         data.webtoons.map((toon: any, index: number) => (
-          <a
-            className="toon-list-item"
-            href={toon.url}
-            key={index}
-            target="_blank"
-          >
-            <img src={toon.thumbnail[0]} alt={toon.title} />
-            <div className="toon-list-item__box">
-              <p>{toon.title}</p>
-              <div>
-                {toon.authors.map((name: string, index: number) => (
-                  <span key={index}>{name}</span>
-                ))}
-              </div>
-            </div>
-          </a>
+          <ToonItem toon={toon} key={index} />
         ))
       ) : (
-        <p>없다..</p>
+        <p>결과가 없습니다.</p>
       )}
     </div>
   );

@@ -2,23 +2,38 @@
 
 .list {
   @apply grid grid-cols-5 gap-2 pb-20;
+
   &-item {
     @apply rounded-sm;
-    @apply bg-stone-900;
     @apply flex flex-col;
+    @apply transition-all;
+    @apply bg-stone-900;
+    @apply overflow-hidden;
     @apply border border-stone-700;
 
     img {
       @apply w-full h-72;
       @apply object-cover;
+      @apply transition-all;
     }
 
     span {
-      @apply p-2;
-      @apply h-8;
+      @apply p-2 h-8;
       @apply inline-block;
-      @apply text-sm break-keep;
-      @apply truncate;
+      @apply relative z-10;
+      @apply bg-stone-900;
+      @apply transition-all;
+      @apply text-sm break-keep truncate;
+    }
+
+    &:hover {
+      @apply border-rose-700;
+      img {
+        @apply scale-105;
+      }
+      span {
+        @apply bg-rose-700;
+      }
     }
   }
 }

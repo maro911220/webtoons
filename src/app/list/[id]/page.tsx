@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import axios from "axios";
+import { useState, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "@/app/(components)/loading";
-import { useState, useCallback } from "react";
+import ToonItem from "@/app/(components)/toonItem";
 
 // API URL 및 요일 데이터
 const API_URL = "https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons";
@@ -14,11 +14,13 @@ const DAYS_KO = ["월", "화", "수", "목", "금", "토", "일"];
 const getCurrentDayIndex = () => (new Date().getDay() + 6) % 7;
 
 export default function Page({ params }: any) {
+  // 요일 인덱스 상태 관리
   const [dayIndex, setDayIndex] = useState(getCurrentDayIndex());
 
   return (
     <div className="toon-con">
-      <div className="toon-day-selector">
+      {/* 요일 버튼 리스트 */}
+      <div className="toon-con-header">
         {DAYS_KO.map((day, index) => (
           <button
             key={index}
@@ -29,12 +31,13 @@ export default function Page({ params }: any) {
           </button>
         ))}
       </div>
+      {/* 선택 요일의 웹툰 목록 표시 */}
       <ToonList dayIndex={dayIndex} provider={params.id} />
     </div>
   );
 }
 
-// 상세
+// 웹툰 목록을 가져오는 컴포넌트
 function ToonList({
   dayIndex,
   provider,
@@ -42,6 +45,7 @@ function ToonList({
   dayIndex: number;
   provider: string;
 }) {
+  // 웹툰 데이터를 가져오는 함수
   const fetchWebtoons = useCallback(async () => {
     const response = await axios.get(API_URL, {
       params: {
@@ -53,6 +57,7 @@ function ToonList({
     return response.data;
   }, [dayIndex, provider]);
 
+  // React Query를 사용하여 웹툰 데이터를 가져옴
   const { isLoading, error, data } = useQuery({
     queryKey: [provider, DAYS[dayIndex]],
     queryFn: fetchWebtoons,
@@ -68,25 +73,11 @@ function ToonList({
   if (error)
     return <p className="py-4 text-center">정보를 불러오는데 실패했습니다.</p>;
 
+  // 웹툰 리스트 렌더링
   return (
     <div className="toon-list">
       {data.webtoons.map((toon: any, index: number) => (
-        <a
-          className="toon-list-item"
-          href={toon.url}
-          key={index}
-          target="_blank"
-        >
-          <img src={toon.thumbnail[0]} alt={toon.title} />
-          <div className="toon-list-item__box">
-            <p>{toon.title}</p>
-            <div>
-              {toon.authors.map((name: string, index: number) => (
-                <span key={index}>{name}</span>
-              ))}
-            </div>
-          </div>
-        </a>
+        <ToonItem toon={toon} key={index} />
       ))}
     </div>
   );
