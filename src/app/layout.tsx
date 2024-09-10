@@ -2,6 +2,7 @@ import "@/style/global.scss";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_KR } from "next/font/google";
 import Header from "./(components)/header";
+import TopBtn from "./(components)/topBtn";
 
 // 메타데이터 설정
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className={IBM.className}>
         <Header />
         <main>{children}</main>
+        <TopBtn />
       </body>
     </html>
   );
