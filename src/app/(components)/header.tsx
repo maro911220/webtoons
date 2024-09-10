@@ -36,7 +36,7 @@ export default function Header() {
             defaultValue={search}
             onChange={handleSearchChange}
             onKeyDown={(e) => e.key === "Enter" && handleSearchSubmit()}
-            placeholder="제목 또는 작가를 입력해주세요"
+            placeholder="제목/작가로 검색할 수 있습니다."
           />
           <button onClick={handleSearchSubmit}>검색</button>
         </div>
@@ -63,7 +63,11 @@ export default function Header() {
             );
           })}
           <li className="header-list-item">
-            <a className="header-git" href="#none">
+            <a
+              target="_blank"
+              className="header-git"
+              href="https://github.com/maro911220"
+            >
               <Github strokeWidth={1.5} />
             </a>
           </li>

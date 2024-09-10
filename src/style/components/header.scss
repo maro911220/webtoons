@@ -33,8 +33,8 @@
       @apply flex items-center justify-center;
 
       a {
-        @apply flex;
-        @apply w-full h-full p-2;
+        @apply w-full h-full p-1.5;
+        @apply flex justify-center items-center;
       }
 
       img {
