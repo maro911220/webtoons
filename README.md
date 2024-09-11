@@ -1,8 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Webtoons
 
-## Getting Started
+##### [Korea Webtoon API](https://github.com/HyeokjaeLee/korea-webtoon-api)를 사용하여 다음과 같은 기능을 구현한 웹툰 목록 페이지를 개발하였습니다.
 
-First, run the development server:
+1. 최근 업로드된 웹툰 목록을 확인할 수 있습니다.
+2. 원하는 플랫폼의 웹툰을 요일별로 확인할 수 있습니다.
+3. 사용자는 제목/작가로 검색하여 웹툰을 확인할 수 있습니다.
+4. 해당 웹툰을 선택하면 웹툰 페이지로 이동합니다.
+
+## 배포 주소
+
+[https://maro-webtoons.vercel.app](https://maro-webtoons.vercel.app)
+
+## 시작 가이드
+
+먼저 개발 서버를 실행합니다.
 
 ```bash
 npm run dev
@@ -14,23 +25,4 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+브라우저에서 http://localhost:3000을 열어 결과를 확인 가능합니다.
