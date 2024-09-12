@@ -66,7 +66,7 @@ export default function Header() {
             <a
               target="_blank"
               className="header-git"
-              href="https://github.com/maro911220"
+              href="https://github.com/maro911220/webtoons"
             >
               <Github strokeWidth={1.5} />
             </a>
